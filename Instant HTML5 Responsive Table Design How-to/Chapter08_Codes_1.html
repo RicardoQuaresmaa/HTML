@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Table Style</title>
+<!-- Optimized mobile viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS -->
+	<style>
+.table{
+	display:table;	
+	border-bottom:2px solid #dddddd;
+	margin:10px 0;
+	width:100%;
+}
+.table-head{
+	 display: table-header-group; 
+}
+.table-head .column { 
+	background:#333333;
+	color:#7d7d7d;
+	border-right:1px solid #5d5d5d;
+	border-bottom:none;
+}
+.table-head .column:hover{ 
+	background:#222222;
+}
+.row{
+	display:table-row; 
+}
+.row .column:nth-child(1){ 
+	border-left:1px solid #eeeeee;
+}
+.row:last-child .column{ 
+	border-bottom:none;
+}
+.column{
+	display:table-cell; 
+	padding:10px 20px;
+	border-bottom:1px solid #eeeeee;
+	border-right:1px solid #eeeeee;
+}
+.column:hover{
+	background:#f9f9f9;
+}
+
+@media all and (max-width: 768px){
+	.table,
+	.row,
+	.column,
+	.column:before{
+		display:block;	
+	}
+	.table,
+	.row .column:last-child{
+		border-bottom:none;
+	}
+	.table-head{
+		position:absolute;
+		top:-1000em;
+		left:-1000em;
+	}
+	.row{
+		border:1px solid #eeeeee;
+		border-top:2px solid #dddddd;
+		border-bottom:2px solid #dddddd;
+		margin:20px 0;
+	}
+	.row .column:nth-child(1){ 
+		border-left:none;
+	}
+	.row .column:last-child{ 
+		border-right:none;
+	}
+	.row:last-child .column,
+	.column{ 
+		border-bottom:1px solid #eeeeee;
+	}
+	.column:before{ 
+		font-weight:bold;
+		padding-right:20px;
+		font-size:12px;
+		content:" "attr(data-label)" :";
+	}
+}
+
+	</style>
+		
+<!-- HTML5 IE Enabling Script -->
+	<!--[if lt IE 9]><script src="https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv.js">
+</script><![endif]-->
+</head>
+<body>
+	<!--More Complex Table layout-->
+	  <table class="table">
+	    <thead>
+		    <tr>   
+		    <th>CONTACT</th>
+		    <th scope="col">Manager</th>
+		    <th scope="col">Label</th>
+		    <th scope="col">Phone</th>
+		    <th scope="col">Cache</th>
+		    <th scope="col">Crew</th>
+		    <th scope="col">Conditions</th>
+		    <th scope="col">Dates</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    <tr>
+			    <th scope="row">Black Sabbath</th>
+			    <td>Richard Both</td>
+			    <td>Atlantic</td>
+			    <td>+1 (408) 257-1500 </td>
+			    <td>$ 100.000</td>
+			    <td>3 Roadies + 2 Stage Manager</td>
+			    <td>50% Advance</td>
+			    <td>05-10 to 04-12</td>    
+		    </tr>
+		    <tr>
+			    <th scope="row">Ac/DC</th>
+			    <td>Paolla Matazo</td>
+			    <td>Sony</td>
+			    <td>+1 (302) 236-0800</td>
+			    <td>$ 150.00</td>
+			    <td>5 Roadies + 1 Stage Manager</td>
+			    <td>60% Advance, 50% Show Date</td>
+			    <td>January 1983 - December 1984</td>   
+		    </tr>
+		    <tr>
+			    <th scope="row">Queen</th>
+			    <td>Suzane Yeld</td>
+			    <td>Warner</td>
+			    <td>+1 (103) 222-6754</td>
+			    <td>$ 200.000</td>
+			    <td>3 Roadies + 2 Stage Manager</td>
+			    <td>100% Advance</td>
+			    <td>01-01 to 10-10</td>   
+		    </tr>
+		    <tr>
+			    <th scope="row">Whitesnake</th>
+			    <td>Paul S. Senne</td>
+			    <td>Vertigo</td>
+			    <td>+1 (456) 233-1243</td>
+			    <td>$ 100.000</td>
+			    <td>4 Roadies</td>
+			    <td>40% Advance</td>
+			    <td>No dates Available</td>   
+		    </tr>
+		    <tr>
+			    <th scope="row">Deep Purple</th>
+			    <td>Ian Friedman</td>
+			    <td>CosaNostra</td>
+			    <td>+1 (200) 255-0066</td>
+			    <td>$ 250.000</td>
+			    <td>5 Roadies + 2 Stage Manager</td>
+			    <td>50% Afvance</td>
+			    <td>August 1984 to August 1985</td>   
+		    </tr>
+		</tbody>
+	</table>
+								
+<!-- JavaScript at the bottom for fast page loading with just one js file -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://raw.github.com/scottjehl/Respond/master/respond.min.js"></script>
+	<script>
+	var headCol =  $('thead th').size();
+	
+	for ( i=0; i <= headCol; i++ )  {
+	
+		var headColLabel = $('thead th:nth-child('+ i +')').text();
+	
+			$('tr th:nth-child('+ i +')').replaceWith(
+			function(){
+				return $('<div class="column" data-label="'+ headColLabel +'">').append($(this).contents());
+			}
+		);
+			$('tr td:nth-child('+ i +')').replaceWith(
+				function(){
+					return $('<div class="column" data-label="'+ headColLabel +'">').append($(this).contents());
+				}
+			);
+	}	
+	
+	$('table').replaceWith(
+		function(){
+			return $('<div class="table">').append($(this).contents());
+		}
+	);	
+	
+	$('thead').replaceWith(
+		function(){
+			return $('<div class="table-head">').append($(this).contents());
+		}
+	);	
+	
+	$('tr').replaceWith(
+		function(){
+			return $('<div class="row">').append($(this).contents());
+		}
+	);	
+	
+	$('th').replaceWith(
+		function(){
+			return $('<div class="column">').append($(this).contents());
+		}
+	);
+</script>
+	
+</body>
+</html>
+

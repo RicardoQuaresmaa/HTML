@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+	<title>HTML Table Style</title>
+<!-- Optimized mobile viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS -->
+	<style>
+		.container {
+			width:600px;
+			overflow: hidden;
+			border:1px solid #000;
+		}
+		.table {
+			  background-color: transparent;
+			  border-collapse: collapse;
+			  border-spacing: 0;
+			  background-color: #fff
+		}
+		.table th,
+		.table td {
+			  padding: 8px;
+			  line-height: 20px;
+			  text-align: left;
+			  vertical-align: top;
+			  border-top: 1px solid #dddddd;
+		}
+		.table th {
+			  font-weight: bold;
+		}
+		.table thead th {
+			  vertical-align: bottom;
+			  color:#0006ff;
+		}
+		
+	</style>
+	
+	
+<!-- HTML5 IE Enabling Script -->
+	<!--[if lt IE 9]><script src="https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv.js">
+</script><![endif]-->
+
+
+</head>
+<body>
+	<table> 
+	    <tr> 
+	        <td>Band</td> 
+	        <td>Album</td> 
+	   	</tr> 
+	    <tr> 
+	        <td>Ac/Dc</td>
+	        <td>Back in Black</td>  
+	    </tr> 
+	    <tr> 
+	        <td>Deep Purple</td>
+	        <td>Burn</td> 
+	    </tr> 
+	</table> 
+	
+	<br/>
+
+	
+	
+	<table>
+	    Band 	Album 
+	   	Ac/Dc 	Back in Black  
+	    Deep Purple 	Burn
+	</table>
+	
+	<br/>
+	<!--More Complex Table layout-->
+	<div class="container">
+	<table class="table">
+		<caption>CLASSIC ALBUMS OF THE EIGHTIES</caption>
+		<thead>
+		    <tr>
+		       <th scope="col">BAND</th>
+		       <th scope="col">ALBUM</th>
+		       <th scope="col">CLASSIC</th>
+		       <th scope="col">YEAR</th>
+		    </tr>
+		</thead>
+		<tfoot>
+		      <tr>
+		          <td colspan="4">* Some research font goes here just for the example.</td>
+		      </tr>
+		</tfoot>
+		<tbody>
+		      <tr>
+		        <th scope="row">AC/DC</th>
+		        <td>Back in Black</td>
+		        <td>Back in Black</td>
+		        <td>1980</td>
+		      </tr>
+		      <tr>
+		        <th scope="row">Van Hallen</th>
+		        <td>1984</td>
+		        <td>Jump</td>
+		        <td>1984</td>
+		      </tr>
+		      <tr>
+		        <th scope="row">Bruce Springsteen</th>
+		        <td>Nebraska</td>
+		        <td>Hungry Heart</td>
+		        <td>1982</td>
+		      </tr>
+		<tbody>
+</table>
+</div>	
+	
+	
+	
+	
+</body>
+</html>

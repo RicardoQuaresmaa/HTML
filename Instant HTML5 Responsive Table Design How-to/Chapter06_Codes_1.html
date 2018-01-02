@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Table Style</title>
+<!-- Optimized mobile viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS -->
+	<style>
+	
+		table {
+		    max-width: 100%;
+		    background-color: transparent;
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		    background-color: #fff
+		}
+		.table {
+		    width: 100%;
+		    margin-bottom: 20px;
+		}
+		.table th,
+		.table td {
+		    padding: 8px;
+		    line-height: 20px;
+		    text-align: left;
+		    vertical-align: top;
+		    border-top: 1px solid #dddddd;
+		}
+		.table th {
+		    font-weight: bold;
+		}
+		.table thead th {
+		    vertical-align: bottom;
+		    color:#0006ff;
+		}
+		.table tbody tr:nth-child(odd) td,
+		.table tbody tr:nth-child(odd) th {
+		  	background-color: #f9f9f9;
+		}
+		.table tbody tr:hover td,
+		.table tbody tr:hover th {
+  			background-color: whitesmoke;
+		}
+
+		@media only screen and (max-width: 768px) { 
+
+		.table { display: block; position: relative; width: 100%; }
+		.table thead { display: block; float: left; background-color: #ebebeb; }
+		.table tbody { 
+			display: block; 
+			width: auto; 
+			position: relative; 
+			overflow-x: auto; 
+			white-space: nowrap;
+			}
+		.table thead tr { display: block; }
+		.table th { display: block; }
+		.table tbody tr { display: inline-block; vertical-align: top; }
+		.table td { display: block; min-height: 1.25em; }
+
+		table tbody tr { border-right: 1px solid #babcbf; }
+
+	}
+	</style>
+		
+<!-- HTML5 IE Enabling Script -->
+	<!--[if lt IE 9]><script src="https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv.js">
+</script><![endif]-->
+</head>
+<body>
+	<!--More Complex Table layout-->
+	<div id="graph"></div>
+	<table id="dynamicTable" class="table">
+		<thead>
+		    <tr>
+		      <th>Reviews</th>
+		      <th>Top</th>
+		      <th>Rolling Stones</th>
+		      <th>Rock Hard</th>
+		      <th>Kerrang</th>
+		    </tr>
+	  	</thead>
+	  	<tbody>
+		    <tr>
+		      <th>Ac/Dc</th>
+		      <td>10</td>
+		      <td>9</td>
+		      <td>8</td>
+		      <td>9</td>
+		    </tr>
+		    <tr>
+		      <th>Queen</th>
+		      <td>9</td>
+		      <td>6</td>
+		      <td>8</td>
+		      <td>5</td>
+		    </tr>
+		    <tr>
+		      <th>Whitesnake</th>
+		      <td>8</td>
+		      <td>9</td>
+		      <td>8</td>
+		      <td>6</td>
+		    </tr>
+		    <tr>
+		      <th>Deep Purple</th>
+		      <td>10</td>
+		      <td>6</td>
+		      <td>9</td>
+		      <td>8</td>
+		    </tr>
+		    <tr>
+		      <th>Black Sabbath</th>
+		      <td>10</td>
+		      <td>5</td>
+		      <td>7</td>
+		      <td>8</td>
+		    </tr>
+	  	</tbody>
+	</table>
+								
+<!-- JavaScript at the bottom for fast page loading with just one js file -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://raw.github.com/scottjehl/Respond/master/respond.min.js"></script>
+	<script src="highcharts.js"></script>
+	<script>
+    	var chart;
+			Highcharts.visualize = function(table, options) {
+			   // the data series
+			    options.series = [];
+			    var l= options.series.length; 
+			    options.series[l] = {
+			      name: $('thead th:eq('+(l+1)+')', table).text(),
+			      data: []
+			    };
+			   $('tbody tr', table).each( function(i) {
+			      var tr = this;
+			      var th = $('th', tr).text();
+			      var td = parseFloat($('td', tr).text());
+			      options.series[0].data.push({name:th,y:td});
+			   });
+			   chart = new Highcharts.Chart(options);
+			}
+			// On document ready, call visualize on the datatable.
+			$(document).ready(function() {         
+			   
+			   var table = document.getElementById('dynamicTable'),
+			   options = {
+			         chart: {
+			            renderTo: 'graph',
+			            defaultSeriesType: 'pie'
+			         },
+			         title: {
+			            text: 'Review Notes from Metal Mags'
+			         },
+			         plotOptions: {
+		                pie: {
+		                    allowPointSelect: true,
+		                    cursor: 'pointer',
+		                    dataLabels: {
+		                        enabled: false
+		                    },
+		                    showInLegend: true
+		                }
+		             },
+			         tooltip: {
+			        	    pointFormat: 'Total: <b>{point.percentage}%</b>',
+			            	percentageDecimals: 1
+            		  }
+			};
+   
+                     
+   Highcharts.visualize(table, options);
+});
+	</script>
+	
+	
+
+</body>
+</html>
+

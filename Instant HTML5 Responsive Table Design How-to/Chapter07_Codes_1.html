@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Table Style</title>
+<!-- Optimized mobile viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS -->
+	<style>
+		table {
+		    width: 100%;
+		    background-color: transparent;
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		    background-color: #fff
+		}
+		th {
+			text-align: left;
+		}
+		td:last-child, th:last-child {
+			text-align:right;
+		}
+		td, th {
+			padding: 6px 12px;
+		}
+		tr:nth-child(odd), tr:nth-child(odd) {
+			background: #f3f3f3;
+		}
+		tr:nth-child(even) {
+			background: #ebebeb;
+		}
+		thead tr:first-child, thead tr:first-child {
+			background: #000;
+			color:white;
+		}
+		table td:empty {
+			background:white;
+		}
+		
+		@media (max-width: 768px) {
+			tr :nth-child(3) {display: none;}
+		}
+		
+		@media (max-width: 480px) {
+			thead tr:first-child {display: none;}
+			th {display: block}
+			td {display: inline!important;}
+		}
+		
+	</style>
+		
+<!-- HTML5 IE Enabling Script -->
+	<!--[if lt IE 9]><script src="https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv.js">
+</script><![endif]-->
+</head>
+<body>
+	<!--More Complex Table layout-->
+	  <table>
+	    <thead>
+		    <tr>   
+		    <th>CONTACT</th>
+		    <th scope="col">Manager</th>
+		    <th scope="col">Label</th>
+		    <th scope="col">Phone</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    <tr>
+			    <th scope="row">Black Sabbath</th>
+			    <td>Richard Both</td>
+			    <td>Atlantic</td>
+			    <td>+1 (408) 257-1500 </td>    
+		    </tr>
+		    <tr>
+			    <th scope="row">Ac/DC</th>
+			    <td>Paolla Matazo</td>
+			    <td>Sony</td>
+			    <td>+1 (302) 236-0800</td>   
+		    </tr>
+		    <tr>
+			    <th scope="row">Queen</th>
+			    <td>Suzane Yeld</td>
+			    <td>Warner</td>
+			    <td>+1 (103) 222-6754</td>   
+		    </tr>
+		    <tr>
+			    <th scope="row">Whitesnake</th>
+			    <td>Paul S. Senne</td>
+			    <td>Vertigo</td>
+			    <td>+1 (456) 233-1243</td>   
+		    </tr>
+		    <tr>
+			    <th scope="row">Deep Purple</th>
+			    <td>Ian Friedman</td>
+			    <td>CosaNostra</td>
+			    <td>+1 (200) 255-0066</td>   
+		    </tr>
+		</tbody>
+	</table>
+								
+<!-- JavaScript at the bottom for fast page loading with just one js file -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://raw.github.com/scottjehl/Respond/master/respond.min.js"></script>
+	
+</body>
+</html>
+
